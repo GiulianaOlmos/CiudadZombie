@@ -115,23 +115,35 @@ Juego.capturarMovimiento = function(tecla) {
   // El movimiento esta determinado por la velocidad del jugador
   if (tecla == 'izq') {
     movX = -velocidad;
+    Jugador.sprite = "imagenes/auto_rojo_izquierda.png";
+    Jugador.ancho= 30;
+    Jugador.alto=15;
   }
   if (tecla == 'arriba') {
     movY = -velocidad;
+    Jugador.sprite = "imagenes/auto_rojo_arriba.png";
+    Jugador.ancho= 15;
+    Jugador.alto= 30;
   }
   if (tecla == 'der') {
     movX = velocidad;
+    Jugador.sprite = "imagenes/auto_rojo_derecha.png";
+    Jugador.ancho= 30;
+    Jugador.alto=15;
   }
   if (tecla == 'abajo') {
     movY = velocidad;
+    Jugador.sprite = "imagenes/auto_rojo_abajo.png";
+    Jugador.ancho= 15;
+    Jugador.alto= 30;
   }
 
   // Si se puede mover hacia esa posicion hay que hacer efectivo este movimiento
   if (this.chequearColisiones(movX + this.jugador.x, movY + this.jugador.y)) {
     /* Aca tiene que estar la logica para mover al jugador invocando alguno
     de sus metodos  */
+    Jugador.movimientos(movX, movY);
 
-    /* COMPLETAR */
   }
 };
 
@@ -147,7 +159,7 @@ Juego.dibujar = function() {
   "Dibujante dibuja al jugador" */
   Dibujante.dibujarEntidad(Jugador); 
 
-  /* Completar */
+  
 
   // Se recorren los obstaculos de la carretera pintandolos
   this.obstaculosCarretera.forEach(function(obstaculo) {
