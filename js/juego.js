@@ -21,8 +21,8 @@ var Juego = {
     /*Aca se van a agregar los obstaculos visibles. Tenemos una valla horizontal
     de ejemplo, pero podras agregar muchos mas. */
     new Obstaculo('imagenes/valla_horizontal.png', 70, 430, 30, 30, 1),
-    new Obstaculo('imagenes/valla_horizontal.png', 100, 430, 30, 30, 1),
-    new Obstaculo('imagenes/valla_horizontal.png', 130, 430, 30, 30, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 105, 430, 30, 30, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 140, 430, 30, 30, 1),
     new Obstaculo('imagenes/valla_vertical.png', 190, 460, 30, 30, 1),
     new Obstaculo('imagenes/valla_horizontal.png', 160, 90, 30, 30, 1),
     new Obstaculo('imagenes/valla_horizontal.png', 130, 90, 30, 30, 1),
@@ -85,7 +85,8 @@ Juego.iniciarRecursos = function() {
     'imagenes/auto_rojo_derecha.png',
     'imagenes/auto_rojo_izquierda.png',
     'imagenes/auto_verde_abajo.png',
-    'imagenes/auto_verde_derecha.png'
+    'imagenes/auto_verde_derecha.png',
+    "imagenes/finish.png"
   ]);
   Resources.onReady(this.comenzar.bind(Juego));
 };
@@ -160,6 +161,10 @@ Juego.dibujar = function() {
   "Dibujante dibuja al jugador" */
   Dibujante.dibujarEntidad(Jugador); 
 
+  //Aca dibuje la imagen de llegada para marcar la meta. 
+
+  Dibujante.dibujarImagen("imagenes/finish.png", 760, 530, 126, 20);
+
   
 
   // Se recorren los obstaculos de la carretera pintandolos
@@ -214,8 +219,8 @@ Juego.chequearColisiones = function(x, y) {
   var puedeMoverse = true
   this.obstaculos().forEach(function(obstaculo) {
     if (this.intersecan(obstaculo, this.jugador, x, y)) {
-
-      /*COMPLETAR, obstaculo debe chocar al jugador*/
+      obstaculo.chocar(this.jugador);
+      /*obstaculo no va en mayuscula por ser un párametro que se pidio, y jugador va con el this porque es lo que se pide en el if*/
 
       puedeMoverse = false
     }
