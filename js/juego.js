@@ -57,7 +57,14 @@ var Juego = {
   ],
   // Los enemigos se agregaran en este arreglo.
   enemigos: [
-
+    new ZombieCaminante('imagenes/zombie3.png', 320, 450, 10, 10, 1, 40),
+    new ZombieCaminante('imagenes/zombie1.png', 460, 470, 10, 10, 1, 40),
+    new ZombieCaminante('imagenes/zombie2.png', 480, 130, 10, 10, 1, 40),
+    new ZombieCaminante('imagenes/zombie4.png', 550, 230, 10, 10, 1, 40),
+    new ZombieCaminante('imagenes/zombie2.png', 870, 150, 10, 10, 1, 40),
+    new ZombieConductor('imagenes/tren_vertical.png', 644, 0, 30, 90, 1, 577,"v"),
+    new ZombieConductor('imagenes/tren_vertical.png', 678, 0, 30, 90, 1, 577,"v"),
+    new ZombieConductor('imagenes/tren_horizontal.png', 870, 150, 10, 10, 1, 40),
   ]
 
 }
@@ -162,7 +169,6 @@ Juego.dibujar = function() {
   Dibujante.dibujarEntidad(Jugador); 
 
   //Aca dibuje la imagen de llegada para marcar la meta. 
-
   Dibujante.dibujarImagen("imagenes/finish.png", 760, 530, 126, 20);
 
   
@@ -174,7 +180,8 @@ Juego.dibujar = function() {
 
   // Se recorren los enemigos pintandolos
   this.enemigos.forEach(function(enemigo) {
-    /* Completar */
+    Dibujante.dibujarEntidad(enemigo);
+    
   });
 
   // El dibujante dibuja las vidas del jugador
